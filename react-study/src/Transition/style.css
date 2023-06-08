@@ -1,0 +1,26 @@
+li {
+    width: 50vw;
+}
+
+.books-enter {
+    opacity: 0;
+    transform: translateX(150px)
+}
+
+.books-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 1s ease;
+}
+.books-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+ .books-exit-active {
+    transform: translateX(150px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+  
+  
