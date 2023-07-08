@@ -1,6 +1,6 @@
 <template>
-    <h1>User</h1>
-    <h2>{{ $route.query.password }}</h2>
+    <h1>Not Found</h1>
+    <h2>{{ $route.params.pathMatch }}</h2>
 </template>
 
 <script setup>

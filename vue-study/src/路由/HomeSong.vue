@@ -1,6 +1,5 @@
 <template>
-    <h1>User</h1>
-    <h2>{{ $route.query.password }}</h2>
+    <h3>songs</h3>
 </template>
 
 <script setup>
