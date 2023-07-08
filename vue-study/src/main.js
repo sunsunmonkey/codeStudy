@@ -4,6 +4,10 @@ import { createApp } from 'vue'
 // import App from  './slot/App'
 // import App from './provide&inject/App'
 // import App from './test/App'
-import App from './Composition API/App'
+// import App from './Composition API/App'
+import App from './路由/App.vue'
+import router from './路由/router'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use( router)
+app.mount('#app')
