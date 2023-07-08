@@ -5,9 +5,13 @@ import { createApp } from 'vue'
 // import App from './provide&inject/App'
 // import App from './test/App'
 // import App from './Composition API/App'
-import App from './路由/App.vue'
-import router from './路由/router'
+// import App from './路由/App.vue'
+// import router from './路由/router'
+import App from './vuex/App.vue'
+import store from './vuex/store'
+
 
 const app = createApp(App)
-app.use( router)
+// app.use( router)
+app.use(store)
 app.mount('#app')
