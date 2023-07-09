@@ -5,7 +5,9 @@ const store  = createStore({
         return {
             message:'zzk',
             count:232,
-            school:'cqupt'
+            school:'cqupt',
+            list:[],
+            title:''
         }
     },
     getters:{
@@ -28,6 +30,17 @@ const store  = createStore({
         hhh(state){
             console.log(state)
         }
+        ,
+        changeTitle(state,payload){
+            state.title = payload
+        }
+    },
+    actions:{
+       async addAction(context){
+         const res = await fetch('http://codercba.com:1888/airbnb/api/home/goodprice')
+         const result = await res.json()
+         context.commit('changeTitle',  result.title)
+       }
     }
 })
 
