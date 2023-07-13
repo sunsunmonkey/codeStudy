@@ -9,16 +9,16 @@ import App from "./test/App";
 // import App from "./Redux_study/RTK/App";
 
 
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 // import store from "./Redux_study/basic/store";
-import store from "./Redux_study/RTK/store/index";
-import { BrowserRouter } from "react-router-dom";
+// import store from "./Redux_study/RTK/store/index";
+// import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.querySelector("#root"))
 
 root.render(
-    <Provider store={store}>
-        <BrowserRouter>
+    // <Provider store={store}>
+    //     <BrowserRouter>
         <App />
-        </BrowserRouter>
-    </Provider>
+    //     </BrowserRouter>
+    // </Provider>
 );

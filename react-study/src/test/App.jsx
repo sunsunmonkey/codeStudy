@@ -1,16 +1,28 @@
-import React, {  memo, useState } from 'react'
+import React, {  memo, useState , useMemo, useRef} from 'react'
 //rmc memo function
-import Son from './Son'
+
 const App = memo(() => {
   const [name,setname] = useState('zzk')
-
-  return (
-    <div className="" >
-        <div onClick={()=>{setname('zk')}}>App</div>
-        <Son name={name}></Son>
-    </div>
-    
+  const [count,setCount] = useState(0)
+  const b = useRef(
+    {
+      name:111
+    }
   )
+  const a = useMemo(()=>{
+    return {
+      name:111
+    }
+  },[count])
+  const c = {
+    name:111
+  }
+  console.log('APP')
+  return (
+
+        <button onClick={()=>{setname(a)}} >App </button>
+
+    )
 })
 
 export default App;

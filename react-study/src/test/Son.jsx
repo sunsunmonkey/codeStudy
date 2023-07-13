@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-const Son = (props) => {
-  const {name} = props
-  console.log('render')  
+const Son = memo((props) => {
+
+  console.log("son")
   return (
-    <div>111</div>
+    <div>111-{1}</div>
   )
-}
+})
 
 export default Son
