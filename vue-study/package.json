@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@opentiny/vue-drawer": "^3.9.0",
     "core-js": "^3.8.3",
     "pinia": "^2.1.4",
     "vue": "^3.2.13",
