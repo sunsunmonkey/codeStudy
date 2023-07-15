@@ -1,4 +1,15 @@
-var __assign = (this && this.__assign) || function () {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
@@ -53,7 +64,7 @@ var MyAxios = /** @class */ (function () {
     };
     return MyAxios;
 }());
-var fetchWrapper = new MyAxios('https://api.example.com');
+var fetchWrapper = new MyAxios('http://codercba.com:1888/airbnb/api/home/goodprice');
 fetchWrapper.addInterceptor({
     onFulfilled: function (request) {
         // Modify request object or perform other operations
@@ -68,12 +79,13 @@ fetchWrapper.addResponseInterceptor({
         return response;
     },
 });
-fetchWrapper.get('/users')
-    .then(function (response) {
-    // Process the response
-    console.log('GET /users response:', response);
+fetchWrapper.get('/')
+.then(function (response) {
+    return response.json()
+}) 
+.then(function (res) {
+    console.log(res)
 })
-    .catch(function (error) {
-    // Handle errors
-    console.error('Error:', error);
-});
+
+</script>
+</html>

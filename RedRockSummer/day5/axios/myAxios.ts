@@ -1,15 +1,19 @@
 interface  Interceptor<T>{
+    //类似于Promise
     onFulfilled?: (value: T) => T | Promise<T>;
     onRejected?: (error: any) => any;
 }
 
 class MyAxios{
+    //拦截器数组
     private interceptors: Interceptor<Request>[] = [];
     private responseInterceptors: Interceptor<Response>[] = [];
 
     constructor(private baseUrl: string = '') {}
 
+
     public request(url:string, options:RequestInit):Promise<Response>{
+        //配置信息
         const requestOptions: RequestInit = {
             ...options,
             headers: {
@@ -17,21 +21,31 @@ class MyAxios{
               'Content-Type': 'application/json',
             },
         }
+    
     const request = new Request(this.baseUrl + url, requestOptions)
-    let chain = Promise.resolve(request);
 
+    //先创建一个promise对象来先执行请求拦截
+    let chain = Promise.resolve(request);
+    
+    //执行请求拦截
     this.interceptors.forEach((interceptor) => {
         chain = chain.then((req) => interceptor.onFulfilled?.(req) || req);
     });
 
+    //正式网络请求，同时返回Promise<Response>
     let ResponseChain:Promise<Response> = chain.then((req) => fetch(req)) ;
 
+    //执行响应拦截
     this.responseInterceptors.forEach((interceptor) => {
         ResponseChain = ResponseChain.then((res) => interceptor.onFulfilled?.(res) || res);
       });
        return ResponseChain ;
-    }
-    public get(url: string, options: RequestInit = {}): Promise<Response> {
+     }
+
+
+
+      //几个方法改掉method参数即可
+     public get(url: string, options: RequestInit = {}): Promise<Response> {
         return this.request(url, { ...options, method: 'GET' });
       }
     
@@ -46,7 +60,8 @@ class MyAxios{
       public delete(url: string, options: RequestInit = {}): Promise<Response> {
         return this.request(url, { ...options, method: 'DELETE' });
       }
-    
+
+      //添加拦截器
       public addInterceptor(interceptor: Interceptor<Request>): void {
         this.interceptors.push(interceptor);
       }
@@ -55,33 +70,5 @@ class MyAxios{
         this.responseInterceptors.push(interceptor);
       }
 }
-
-const fetchWrapper = new MyAxios('https://api.example.com');
-
-fetchWrapper.addInterceptor({
-  onFulfilled: (request) => {
-    // Modify request object or perform other operations
-    console.log('Request interceptor');
-    return request;
-  },
-});
-
-fetchWrapper.addResponseInterceptor({
-  onFulfilled: (response) => {
-    // Modify response object or perform other operations
-    console.log('Response interceptor');
-    return response;
-  },
-});
-
-fetchWrapper.get('/users')
-  .then((response) => {
-    // Process the response
-    console.log('GET /users response:', response);
-  })
-  .catch((error) => {
-    // Handle errors
-    console.error('Error:', error);
-  });
 
 export {}

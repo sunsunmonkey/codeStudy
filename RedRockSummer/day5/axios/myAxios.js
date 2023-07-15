@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-<script>
-    var __assign = (this && this.__assign) || function () {
+
+//编译后的
+var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
@@ -64,7 +55,7 @@ var MyAxios = /** @class */ (function () {
     };
     return MyAxios;
 }());
-var fetchWrapper = new MyAxios('http://codercba.com:1888/airbnb/api/home/goodprice');
+var fetchWrapper = new MyAxios('https://api.example.com');
 fetchWrapper.addInterceptor({
     onFulfilled: function (request) {
         // Modify request object or perform other operations
@@ -88,6 +79,3 @@ fetchWrapper.get('/users')
     // Handle errors
     console.error('Error:', error);
 });
-
-</script>
-</html>
